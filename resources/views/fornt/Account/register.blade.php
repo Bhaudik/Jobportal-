@@ -37,7 +37,7 @@
                         </form>
                     </div>
                     <div class="mt-4 text-center">
-                        <p>Have an account? <a href="login.html">Login</a></p>
+                        <p>Have an account? <a href="{{ route('account.login') }}">Login</a></p>
                     </div>
                 </div>
             </div>
@@ -64,10 +64,10 @@
                                 .addClass('invalid-feedback')
                                 .html(errors.name)
                         } else {
-                            $('#name').addClass('is-invalid')
+                            $('#name').remove('is-invalid')
                                 .siblings('p')
-                                .addClass('invalid-feedback')
-                                .html(errors.name)
+                                .remove('invalid-feedback')
+                                .html('')
                         }
 
                         if (errors.email) {
@@ -76,10 +76,10 @@
                                 .addClass('invalid-feedback')
                                 .html(errors.email)
                         } else {
-                            $('#name').addClass('is-invalid')
+                            $('#email').remove('is-invalid')
                                 .siblings('p')
-                                .addClass('invalid-feedback')
-                                .html(errors.name)
+                                .remove('invalid-feedback')
+                                .html('')
                         }
 
                         if (errors.password) {
@@ -88,9 +88,9 @@
                                 .addClass('invalid-feedback')
                                 .html(errors.password)
                         } else {
-                            $('#password').addClass('is-invalid')
+                            $('#password').remove('is-invalid')
                                 .siblings('p')
-                                .addClass('invalid-feedback')
+                                .remove('invalid-feedback')
                                 .html(errors.password)
                         }
                         if (errors.confirm_password) {
@@ -99,12 +99,31 @@
                                 .addClass('invalid-feedback')
                                 .html(errors.confirm_password)
                         } else {
-                            $('#confirm_password').addClass('is-invalid')
+                            $('#confirm_password').remove('is-invalid')
                                 .siblings('p')
-                                .addClass('invalid-feedback')
+                                .remove('invalid-feedback')
                                 .html(errors.confirm_password)
                         }
 
+                    } else {
+                        $('#name').remove('is-invalid')
+                            .siblings('p')
+                            .remove('invalid-feedback')
+                            .html('')
+                        $('#email').remove('is-invalid')
+                            .siblings('p')
+                            .remove('invalid-feedback')
+                            .html('')
+                        $('#password').remove('is-invalid')
+                            .siblings('p')
+                            .remove('invalid-feedback')
+                            .html('')
+                        $('#confirm_password').remove('is-invalid')
+                            .siblings('p')
+                            .remove('invalid-feedback')
+                            .html('')
+
+                        window.location.href = '{{ route('account.login') }}';
                     }
 
                 }
